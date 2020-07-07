@@ -1,3 +1,3 @@
-module github.com/mtyurt/supervisor-event-handler-example
+module github.com/network22/supervisor-event-handler-example
 
-require github.com/mtyurt/supervisor-event-handler v1.0.1
+require github.com/network22/supervisor-event-handler v1.0.2

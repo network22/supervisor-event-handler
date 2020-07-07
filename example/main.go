@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	eventhandler "github.com/mtyurt/supervisor-event-handler"
+	eventhandler "github.com/network22/supervisor-event-handler"
 )
 
 func main() {
