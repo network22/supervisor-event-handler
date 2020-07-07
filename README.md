@@ -1,3 +1,9 @@
+# Notice
+
+This is a fork from github.com/mtyurt/supervisor-event-handler.
+
+It made only for add some changes, test them and push back to original repository.
+
 # supervisor-event-handler
 
 This small library abstracts away supervisor's event handling protocol and provides
@@ -5,13 +11,14 @@ an easy way to process events. For more detailed information about events, pleas
 
 # features
 
-- support generic events, like `PROCESS_STATE` to handle `PROCESS_STATE*` events
+- support generic events,  like  `PROCESS_STATE`  to  handle  `PROCESS_STATE*`.
+  Also `EVENT` supported as global generic event name
 - run processors via goroutines to avoid buffer overflow as much as possible
 
 # installation
 
 ```
-go get -u github.com/mtyurt/supervisor-event-handler
+go get -u github.com/network22/supervisor-event-handler
 ```
 
 # usage
@@ -26,7 +33,7 @@ import (
 	"fmt"
 	"os"
 
-	eventhandler "github.com/mtyurt/supervisor-event-handler"
+	eventhandler "github.com/network22/supervisor-event-handler"
 )
 
 func main() {
