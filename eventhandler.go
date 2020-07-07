@@ -135,7 +135,8 @@ func (h *EventHandler) processEvent(header HeaderTokens, payload map[string]stri
 	if !ok {
 		// for generic event types like PROCESS_STATE
 		for event, p := range h.processors {
-			if strings.HasPrefix(header.EventName, event) {
+			if strings.HasPrefix(header.EventName, event)
+					|| event == "EVENT" {
 				processor = p
 			}
 		}
