@@ -158,7 +158,7 @@ func (h *EventHandler) parseTokensToMap(tokens string) (tokenMap map[string]stri
 	for _, entry := range tokenList {
 		// token might not containe pair key:value, or contain several separators
 		splited := strings.SplitN(entry, ":", 2)
-		if len(splited) < 1 {
+		if len(splited) < 2 {
 			tokenMap[splited[0]] = ""
 		} else {
 			tokenMap[splited[0]] = splited[1]
