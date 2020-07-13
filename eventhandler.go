@@ -100,8 +100,9 @@ func (h *EventHandler) Start() {
 
 		if err != nil {
 			log.Printf("Processing event failed, probably not your fault, error: %s\n", err)
+		} else {
+			go h.processEvent(header, dataMap)
 		}
-		go h.processEvent(header, dataMap)
 
 		fmt.Print("RESULT 2\nOK")
 	}
@@ -154,7 +155,11 @@ func (h *EventHandler) parseTokensToMap(tokens string) (tokenMap map[string]stri
 	if len(strings.TrimSpace(tokens)) == 0 {
 		return
 	}
-	tokenList := strings.Split(strings.TrimSpace(tokens), " ")
+	// split by new line separator to get followd data
+	dataList := strings.SplitN(strings.TrimSpace(tokens), "\n", 2)
+
+	// use only first line to get tokens
+	tokenList := strings.Split(strings.TrimSpace(dataList[0]), " ")
 	for _, entry := range tokenList {
 		// token might not containe pair key:value, or contain several separators
 		splited := strings.SplitN(entry, ":", 2)
@@ -164,6 +169,12 @@ func (h *EventHandler) parseTokensToMap(tokens string) (tokenMap map[string]stri
 			tokenMap[splited[0]] = splited[1]
 		}
 	}
+
+	// Add data as data token
+	if len(dataList) > 1 {
+		tokenMap["data"] = dataList[1]
+	}
+
 	return
 }
 
